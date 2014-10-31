@@ -1,10 +1,9 @@
-package lt.wonderb0.manybrackets;
+package lt.wonderb0.manybrackets.parsing;
 
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BracketParser {

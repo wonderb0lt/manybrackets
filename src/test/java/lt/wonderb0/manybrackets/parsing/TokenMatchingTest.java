@@ -1,5 +1,6 @@
-package lt.wonderb0.manybrackets;
+package lt.wonderb0.manybrackets.parsing;
 
+import lt.wonderb0.manybrackets.parsing.Token;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
