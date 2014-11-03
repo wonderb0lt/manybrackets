@@ -6,6 +6,9 @@ import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * Implementation of puzzle rules 1 & 2
+ */
 public class AllBracketsMustBeClosedInCorrectOrderRule implements Rule {
     /**
      * A stack of open tokens, represented by their opening form.
@@ -29,9 +32,9 @@ public class AllBracketsMustBeClosedInCorrectOrderRule implements Rule {
         }
 
         if (openTokens.isEmpty()) {
-            return new RuleValidationResult(true);
+            return RuleValidationResult.passed();
         } else {
-            return new RuleValidationResult(false, "The following brackets remained unclosed: " + openTokens);
+            return RuleValidationResult.failed("The following brackets remained unclosed: " + openTokens);
         }
     }
 
@@ -46,10 +49,10 @@ public class AllBracketsMustBeClosedInCorrectOrderRule implements Rule {
             if (token.getOpeningForm().equals(lastOpened)) {
                 openTokens.pop();
             } else {
-                result = new RuleValidationResult(false, "Encountered closing token " + token + " even though " + lastOpened + " needs to be closed first");
+                result = RuleValidationResult.failed("Encountered closing token " + token + " even though " + lastOpened + " needs to be closed first");
             }
         } catch (EmptyStackException e) {
-            result = new RuleValidationResult(false, "Found closing bracket of type " + token + ", but this closes unopened bracket");
+            result = RuleValidationResult.failed("Found closing bracket of type " + token + ", but this closes unopened bracket");
         }
     }
 }

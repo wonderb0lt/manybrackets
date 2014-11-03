@@ -12,14 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 
-public class AllBracketsMustBeClosedInCorrectOrderRuleTest {
-    private Rule rule;
-
-    @Before
-    public void before() {
-        rule = new AllBracketsMustBeClosedInCorrectOrderRule();
-    }
-
+public class AllBracketsMustBeClosedInCorrectOrderRuleTest extends RuleTest {
     @Test
     public void testSimplePassingExample() {
         assertThat(rule.validate(parsed("()")).passedRule(), is(true));
@@ -55,7 +48,8 @@ public class AllBracketsMustBeClosedInCorrectOrderRuleTest {
         assertThat(result.passedRule(), is(false));
     }
 
-    private List<Token> parsed(String input) {
-        return new BracketParser().parse(input);
+    @Override
+    protected Rule newRuleInstance() {
+        return new AllBracketsMustBeClosedInCorrectOrderRule();
     }
 }

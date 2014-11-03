@@ -2,6 +2,8 @@ package lt.wonderb0.manybrackets.validation;
 
 import com.google.common.base.MoreObjects;
 
+import java.util.Optional;
+
 /**
  * Simple container for the result of single {@link lt.wonderb0.manybrackets.validation.Rule}s
  */
@@ -20,8 +22,12 @@ public class RuleValidationResult {
         this.message = MoreObjects.firstNonNull(message, "");
     }
 
-    public RuleValidationResult(boolean passesRule) {
-        this(passesRule, null);
+    public static RuleValidationResult passed() {
+        return new RuleValidationResult(true, null);
+    }
+
+    public static RuleValidationResult failed(String message) {
+        return new RuleValidationResult(false, message);
     }
 
     public boolean passedRule() {
