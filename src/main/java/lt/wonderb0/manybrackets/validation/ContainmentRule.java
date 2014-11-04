@@ -9,7 +9,9 @@ import java.util.Set;
 import java.util.Stack;
 
 /**
- * Implementation for rules 3, 4 and (implicitly) rule 6
+ * Implementation for rules 3, 4 and (implicitly) rule 6.
+ * <p/>
+ * These rules state various rules which kinds of tokens are allowed enclosed by other tokens.
  */
 public class ContainmentRule implements Rule {
     private Stack<Token> openTokens = new Stack<>();

@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Implementation of puzzle rules 1 & 2
+ * Implementation of puzzle rules 1 & 2.
+ * <p/>
+ * This rule says that the tokens must open and close in the order they've opened
  */
 public class AllBracketsMustBeClosedInCorrectOrderRule implements Rule {
     /**
@@ -30,6 +32,7 @@ public class AllBracketsMustBeClosedInCorrectOrderRule implements Rule {
                 return result;
             }
         }
+
 
         if (openTokens.isEmpty()) {
             return RuleValidationResult.passed();

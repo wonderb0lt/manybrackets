@@ -15,8 +15,19 @@ public enum Token {
     BRACKET_OPEN('[', false, null),
     BRACKET_CLOSE(']', true, BRACKET_OPEN);
 
+    /**
+     * The corresponding textual character when parsing from a string
+     */
     private Character correspondingCharacter;
+
+    /**
+     * Whether or not this is a closing form of a bracket (for example, <code>)</code> is while <code>(</code> isn't)
+     */
     private boolean closing;
+
+    /**
+     * The corresponding opening form of a closing bracket, or null if this particular token is the opening form.
+     */
     private Token openingForm;
 
     Token(Character correspondingCharacter, boolean closing, Token openingForm) {
@@ -34,12 +45,11 @@ public enum Token {
     }
 
     public boolean isOpening() {
-        // Method only for better readability.
         return !isClosing();
     }
 
     /**
-     * @return The opening form for this token (i.e. BRACKET_OPEN for BRACKET_CLOSE), or null if this is not a closing token
+     * @return The opening form for this token, or null if this is not a closing token
      */
     public Token getOpeningForm() {
         return openingForm;

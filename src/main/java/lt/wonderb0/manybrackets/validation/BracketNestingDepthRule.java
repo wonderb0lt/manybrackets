@@ -6,9 +6,14 @@ import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Implementation of rule 5 of the puzzle.
+ * <p/>
+ * This rule specifies that any kind of token can appear inside brackets, but only directly (i.e. no nesting), except
+ * for nested brackets.
+ */
 public class BracketNestingDepthRule implements Rule {
     private Stack<AtomicInteger> nestingDepths = new Stack<>();
-    private boolean inBracket = false;
 
     @Override
     public RuleValidationResult validate(List<Token> tokens) {
