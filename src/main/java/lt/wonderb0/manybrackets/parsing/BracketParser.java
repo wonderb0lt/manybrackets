@@ -7,6 +7,10 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 public class BracketParser {
+    /**
+     * @return The tokens in order of appearance in the string
+     * @throws java.lang.IllegalArgumentException if the input string is syntactically malformed
+     */
     public List<Token> parse(String input) {
         Preconditions.checkNotNull(input, "Passed input string for BracketParser must not be null");
         Preconditions.checkArgument(!input.isEmpty(), "Input cannot be an empty string");

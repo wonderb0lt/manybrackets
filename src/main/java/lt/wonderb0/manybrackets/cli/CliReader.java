@@ -23,8 +23,13 @@ public abstract class CliReader {
     }
 
     boolean checkString(String tokens) {
-        Validator validator = new Validator();
-        return validator.validate(parser.parse(tokens));
+        try {
+            Validator validator = new Validator();
+            return validator.validate(parser.parse(tokens));
+        } catch (IllegalArgumentException e) {
+            // Return false on illegal input, like "{a}
+            return false;
+        }
     }
 
     protected abstract void handleLine(String line);
